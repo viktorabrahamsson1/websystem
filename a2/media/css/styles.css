@@ -1,0 +1,71 @@
+body {
+  background: #ffedd8;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+}
+/* Group selector. A few headings with the same color */
+h1,
+h2,
+h3 {
+  color: #8b5e34;
+  font-family: "Courier New", Courier, monospace;
+}
+a {
+  /* anchors */
+  color: #d4a276;
+}
+
+.navigation li {
+  font-size: 120%;
+  font-weight: bold;
+  float: left;
+  margin: 0 8px;
+}
+
+.navigation ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #a0876b;
+  overflow: hidden;
+}
+
+.navigation a {
+  text-decoration: none;
+  padding: 12px;
+  display: block;
+}
+
+.container {
+  width: 60%;
+  min-width: 640px;
+  margin: 0 auto;
+  padding: 8px;
+}
+
+.content {
+  background-color: white;
+  padding: 8px;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+.column > div {
+  padding-right: 6px;
+}
+
+.column h1:first-child {
+  margin-top: 0;
+}
+
+p {
+  font-family: monospace;
+}
+
+.navigation a.active {
+  background: #a0876b; /* change to a color of your choice */
+}
