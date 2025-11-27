@@ -1,18 +1,21 @@
 <?php
 include('template.php');
-
-if(isset($_POST["username"]) and isset($_POST["password"])){
+if (isset($_POST['username']) and isset($_POST['password'])) {
   $query = <<<END
-  SELECT username, password, id FROM users
-  WHERE username = '{$_POST["username"]}'
-  AND password = '{$_POST["password"]}'
-  END;
+SELECT username, password, id FROM users
+WHERE username = '{$_POST['username']}'
+AND password = '{$_POST['password']}'
+END;
+  $result = $mysqli->query($query);
+  if ($result->num_rows > 0) {
+    $row = $result->fetch_object();
+    $_SESSION["username"] = $row->username;
+    $_SESSION["userId"] = $row->id;
+    header("Location:index.php");
+  } else {
+    echo "Wrong username or password. Try again";
+  }
 }
-
-$result = $mysqli->query($query);
-$res = mysqli_fetch_assoc($result);
-echo mysqli_num_rows($result);
-
 $content = <<<END
 <form action="login.php" method="post">
 <input type="text" name="username" placeholder="username">
