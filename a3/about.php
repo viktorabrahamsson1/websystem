@@ -1,7 +1,17 @@
-<meta charset="utf-8">
-<?php
-include('template.php');
-$content = <<<END
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/stylesheet.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <?php
+  include('template.php');
+  $content = <<<END
   <h1>About this website</h1>
   <p>Work in progress</p>
   <h3>Send a message</h3>
@@ -13,6 +23,9 @@ $content = <<<END
   <input type="submit" value="Send">
 </form>
 END;
-echo $navigation;
-echo $content;
-?>  
+  echo $navigation;
+  echo $content;
+  ?>
+</body>
+
+</html>
