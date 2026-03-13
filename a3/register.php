@@ -18,8 +18,9 @@ VALUES('{$_POST['username']}','{$_POST['password']}','
 {$_POST['email']}','{$_POST['fname']}','{$_POST['lname']}')
 END;
     if ($mysqli->query($query) !== TRUE) {
-      die("Could not query database" . $mysqli->errno . " : " . $mysqli->error);
       header('Location:index.php');
+
+      die("Could not query database" . $mysqli->errno . " : " . $mysqli->error);
     }
   }
   $content = <<<END

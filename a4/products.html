@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="media/css/styles.css" />
+  </head>
+  <body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <div class="container">
+      <h1>Welcome to Alice's Smart Tech</h1>
+      <nav class="">
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link active" aria-current="page"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="openinghours.html" class="nav-link">Opening Hours</a>
+          </li>
+          <li class="nav-item">
+            <a href="products.html" class="nav-link">Products</a>
+          </li>
+          <li class="nav-item">
+            <a href="testpage.html" class="nav-link">Test Page</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="content">
+        <select id="filter" class="form-select mb-3" style="width: 200px">
+          <option value="all">All</option>
+          <option value="health">Health</option>
+          <option value="wearable">Wearable</option>
+          <option value="phone">Phone</option>
+        </select>
+
+        <table class="table">
+          <tr>
+            <th>Product</th>
+            <th>Description</th>
+            <th>Price</th>
+          </tr>
+          <tr>
+            <td>Apple watch</td>
+            <td>monitor health</td>
+            <td>500$</td>
+          </tr>
+          <tr>
+            <td>Smart ring</td>
+            <td>monitor heart rate</td>
+            <td>150$</td>
+          </tr>
+          <tr>
+            <td>phone</td>
+            <td>iphone 15 with health features</td>
+            <td>1500$</td>
+          </tr>
+        </table>
+        <div id="recommendations"></div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function () {
+        const container = document.getElementById("recommendations");
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "recommendations.json");
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            const data = JSON.parse(xhr.responseText);
+            const firstTen = data.slice(0, 10);
+
+            firstTen.forEach(function (item) {
+              const wrapper = document.createElement("div");
+              wrapper.className = "mb-3";
+
+              const title = document.createElement("h3");
+              title.textContent = item.title;
+
+              const body = document.createElement("p");
+              body.textContent = item.body;
+
+              wrapper.appendChild(title);
+              wrapper.appendChild(body);
+              container.appendChild(wrapper);
+            });
+          }
+        };
+        xhr.send();
+      });
+    </script>
+  </body>
+</html>
